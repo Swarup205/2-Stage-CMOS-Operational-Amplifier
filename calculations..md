@@ -37,19 +37,13 @@ This document presents the analytical design procedure for the two-stage CMOS op
 
 The Miller compensation capacitor was selected to obtain a phase margin greater than **60°**.
 
-\[
-C_C > 0.22C_L
-\]
+Cc > 0.22 × CL
 
-\[
-C_C > 0.22 \times 2\text{ pF}
-\]
+Cc > 0.22 × 2 pF
 
-\[
-C_C > 440\text{ fF}
-\]
+Cc > 440 fF
 
-The final compensation capacitor was chosen as:
+Final selected value:
 
 **Cc = 500 fF**
 
@@ -59,24 +53,18 @@ The final compensation capacitor was chosen as:
 
 The required tail current was determined from the slew-rate specification.
 
-\[
-SR=\frac{I_5}{C_C}
-\]
+**SR = I5 / Cc**
 
-Given
+Given:
 
 - Slew Rate = 40 V/µs
 - Cc = 500 fF
 
 Therefore,
 
-\[
-I_5 = SR \times C_C
-\]
+**I5 = SR × Cc**
 
-\[
-I_5 = 20\,\mu A
-\]
+**I5 = 20 µA**
 
 ---
 
@@ -84,9 +72,7 @@ I_5 = 20\,\mu A
 
 The input differential pair transconductance was estimated using
 
-\[
-g_{m1}=2\pi \times GBW \times C_C
-\]
+**gm1 = 2π × GBW × Cc**
 
 The final value was verified and optimized through simulation.
 
@@ -94,11 +80,9 @@ The final value was verified and optimized through simulation.
 
 # Second Stage Design
 
-To achieve a phase margin greater than **60°**, the second-stage transconductance was selected as
+To obtain a phase margin greater than **60°**, the second-stage transconductance was selected as
 
-\[
-g_{m6}\approx10g_{m1}
-\]
+**gm6 ≈ 10 × gm1**
 
 The final transistor sizing was refined through iterative simulation.
 
@@ -108,11 +92,7 @@ The final transistor sizing was refined through iterative simulation.
 
 The current mirrors were designed according to the required current ratios using
 
-\[
-\frac{(W/L)_1}{(W/L)_2}
-=
-\frac{I_{D1}}{I_{D2}}
-\]
+**(W/L)₁ / (W/L)₂ = ID₁ / ID₂**
 
 The final transistor dimensions were obtained after iterative optimization.
 
@@ -135,26 +115,22 @@ The final transistor dimensions were obtained after iterative optimization.
 
 # Saturation Verification
 
-The operating point analysis confirms that the MOSFETs remain in the desired operating region across the specified input common-mode range.
+The operating-point analysis confirms the operating region of each MOSFET across the specified input common-mode range.
 
-### NMOS
+### NMOS Saturation Condition
 
-\[
-V_{DS}>V_{GS}-V_{TH}
-\]
+**VDS > VGS − VTH**
 
-### PMOS
+### PMOS Saturation Condition
 
-\[
-V_{SD}>V_{SG}-|V_{TH}|
-\]
+**VSD > VSG − |VTH|**
 
 ---
 
 ## ICMR = 0.8 V
 
-| MOSFET | VDS/VSD (V) | VGS−VTH / VSG−|VTH| (V) | Region |
-|---------|------------:|--------------------------:|--------|
+| MOSFET | VDS/VSD (V) | VGS − VTH / VSG − |VTH| (V) | Region |
+|---------|------------:|-------------------------:|--------|
 | M1 | 0.915 | 0.186 | Saturation |
 | M2 | 0.915 | 0.186 | Saturation |
 | M3 | 0.641 | 0.166 | Saturation |
@@ -167,8 +143,8 @@ V_{SD}>V_{SG}-|V_{TH}|
 
 ## ICMR = 1.6 V
 
-| MOSFET | VDS/VSD (V) | VGS−VTH / VSG−|VTH| (V) | Region |
-|---------|------------:|--------------------------:|--------|
+| MOSFET | VDS/VSD (V) | VGS − VTH / VSG − |VTH| (V) | Region |
+|---------|------------:|-------------------------:|--------|
 | M1 | 0.125 | 0.205 | Near Saturation |
 | M2 | 0.125 | 0.205 | Near Saturation |
 | M3 | 0.650 | 0.260 | Saturation |
@@ -211,21 +187,16 @@ V_{SD}>V_{SG}-|V_{TH}|
 
 # Voltage Gain
 
-The overall open-loop voltage gain of the two-stage CMOS operational amplifier is given by
+The overall open-loop voltage gain is
 
-\[
-A_v =
-g_{m1}(r_{o2}\parallel r_{o4})
-\times
-g_{m6}(r_{o6}\parallel r_{o7})
-\]
+**Av = gm₁(ro₂ || ro₄) × gm₆(ro₆ || ro₇)**
 
 ---
 
 ## ICMR = 0.8 V
 
 | Stage | Gain |
-|-------|------|
+|-------|------:|
 | First Stage | 30.58 dB |
 | Second Stage | 34.77 dB |
 | **Overall Gain** | **65.35 dB** |
@@ -235,12 +206,12 @@ g_{m6}(r_{o6}\parallel r_{o7})
 ## ICMR = 1.6 V
 
 | Stage | Gain |
-|-------|------|
+|-------|------:|
 | First Stage | 32.94 dB |
 | Second Stage | 30.91 dB |
 | **Overall Gain** | **63.84 dB** |
 
-The simulated open-loop gain exceeds the design target of **60 dB** over the specified input common-mode range.
+The simulated open-loop gain exceeds the target specification of **60 dB** over the entire input common-mode range.
 
 ---
 
@@ -248,26 +219,22 @@ The simulated open-loop gain exceeds the design target of **60 dB** over the spe
 
 Using
 
-- \(I_{D5}=20\,\mu A\)
-- \(I_{D6}=90\,\mu A\)
-- \(V_{DD}=1.8\,V\)
+- ID5 = 20 µA
+- ID6 = 90 µA
+- VDD = 1.8 V
 
-The total power dissipation is
+The total power dissipation is calculated as
 
-\[
-P=V_{DD}(I_{D5}+I_{D6})
-\]
+**P = VDD × (ID5 + ID6)**
 
-\[
-P=1.8\times110\,\mu A
-\]
+Substituting the values,
 
-\[
-P=198\,\mu W
-\]
+**P = 1.8 × (20 + 90) µA**
 
-which satisfies the design specification of
+**P = 198 µW**
 
-\[
-P<300\,\mu W.
-\]
+Since
+
+**198 µW < 300 µW**
+
+the designed operational amplifier satisfies the required power dissipation specification.
