@@ -129,8 +129,8 @@ The operating-point analysis confirms the operating region of each MOSFET across
 
 ## ICMR = 0.8 V
 
-| MOSFET | VDS/VSD (V) | VGS − VTH / VSG − |VTH| (V) | Region |
-|---------|------------:|-------------------------:|--------|
+| MOSFET | VDS/VSD (V) | Saturation Limit (VGS − VTH or VSG − \|VTH\|) (V) | Region |
+|:-------:|------------:|--------------------------------------------------:|:--------------|
 | M1 | 0.915 | 0.186 | Saturation |
 | M2 | 0.915 | 0.186 | Saturation |
 | M3 | 0.641 | 0.166 | Saturation |
@@ -143,8 +143,8 @@ The operating-point analysis confirms the operating region of each MOSFET across
 
 ## ICMR = 1.6 V
 
-| MOSFET | VDS/VSD (V) | VGS − VTH / VSG − |VTH| (V) | Region |
-|---------|------------:|-------------------------:|--------|
+| MOSFET | VDS/VSD (V) | Saturation Limit (VGS − VTH or VSG − \|VTH\|) (V) | Region |
+|:-------:|------------:|--------------------------------------------------:|:--------------|
 | M1 | 0.125 | 0.205 | Near Saturation |
 | M2 | 0.125 | 0.205 | Near Saturation |
 | M3 | 0.650 | 0.260 | Saturation |
@@ -152,8 +152,6 @@ The operating-point analysis confirms the operating region of each MOSFET across
 | M5 | 1.025 | 0.276 | Saturation |
 | M6 | 0.677 | 0.260 | Saturation |
 | M7 | 1.123 | 0.276 | Saturation |
-
----
 
 # Final Small-Signal Parameters
 
