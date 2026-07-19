@@ -67,9 +67,13 @@ gm₁ = 2π × GBW × Cc
 
 SR = I₅ / Cc
 
+## **Phase Margin**
+
+gm₆ ≈ 2.2 × gm₁ (for Phase Margin ≈ 60°)
+
 ### Gain
 
-Av = gm₁ro₁ × gm₆ro₆
+Av = gm2(ro2 || ro4) × gm6(ro6 || ro7)
 
 ### Output Resistance
 
@@ -87,37 +91,23 @@ gm = 2Id/Vov
 
 gds = λId
 
-## Design Equations
+### Current Mirror Design
 
-The following equations were used during design.
+(W/L)₁ / (W/L)₂ = ID₁ / ID₂
 
-### GBW
+### Transconductance Ratio
 
-gm₁ = 2π × GBW × Cc
+gm₁ / gm₂ = √[(ID₁(W/L)₁)/(ID₂(W/L)₂]
 
-### Slew Rate
+### Saturation Conditions
 
-SR = I₅ / Cc
+For NMOS:
 
-### Gain
+VDS ≥ VGS − VTH = VOV
 
-Av = gm₁ro₁ × gm₆ro₆
+For PMOS:
 
-### Output Resistance
-
-ro = 1/gds
-
-### Drain Current
-
-Id = (1/2)μCox(W/L)Vov²
-
-### Transconductance
-
-gm = 2Id/Vov
-
-### Output Conductance
-
-gds = λId
+VSD ≥ VSG − |VTH|
 
 ## Final Transistor Dimensions
 
@@ -152,3 +142,30 @@ gds = λId
 ## Output Swing
 
 (Add graph)
+
+## Performance Summary
+
+| Parameter | Target | VCM = 0.8 V | VCM = 1.6 V |
+|-----------|--------|-------------|-------------|
+| DC Gain | ≥ 60 dB | 60.5 dB | 60.2 dB |
+| GBW | 30 MHz | 30.1 MHz | 30.0 MHz |
+| Phase Margin | ≥ 60° | 64° | 62° |
+| Slew Rate | ≥ 20 V/μs | 21.0 V/μs | 20.8 V/μs |
+| Power Dissipation | ≤ 300 μW | 270 μW | 272 μW |
+| ICMR | 0.8–1.6 V | ✓ Lower Limit | ✓ Upper Limit |
+
+## Future Improvements
+
+- Layout implementation
+- DRC and LVS verification
+- Post-layout simulation
+- Monte Carlo analysis
+- Process corner analysis
+- PSRR optimization
+- Noise analysis
+
+## References
+
+1. Behzad Razavi, *Design of Analog CMOS Integrated Circuits*, McGraw-Hill Education.
+2. K. T. Hafeez, *Design of a Two-Stage CMOS Operational Amplifier*.
+3. Relevant 180 nm CMOS BSIM3 Model Documentation (used for simulation and device parameters).
