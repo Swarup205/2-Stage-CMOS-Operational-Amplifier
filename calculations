@@ -37,13 +37,13 @@ Chosen value:
 
 Cc > 0.22 * CL
 Cc > 440fF
-Cc = 800fF
+Cc = 500fF
 
 ## Step 2 – Bias Current
 
 Required Slew Rate
 
-SR = 20 V/µs
+SR = 40 V/µs
 
 Using
 
@@ -138,3 +138,10 @@ Verified for
 | M5 | | |
 | M6 | | |
 | M7 | | |
+
+## Power Dissipation 
+ID5 = 20µA
+ID6 = 90µA
+VDD = 1.8V
+
+Power Dissippation = 1.8 * (ID5 + ID6) = 198µW (<300µW)
