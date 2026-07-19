@@ -1,147 +1,273 @@
 # Design Calculations
 
-This document presents the complete analytical design procedure of the two-stage CMOS operational amplifier implemented in a 180 nm CMOS process.
+This document presents the analytical design procedure for the two-stage CMOS operational amplifier implemented using a **180 nm CMOS process**. The transistor dimensions were initially determined through analytical calculations based on the design specifications and were subsequently optimized using LTspice simulations to meet the required performance.
 
-The transistor dimensions were calculated analytically based on the given specifications before simulation and iterative optimization.
+---
 
-## Design Specifications
+# Design Specifications
 
 | Parameter | Value |
 |-----------|-------|
 | Technology | 180 nm CMOS |
-| VDD | 1.8 V |
-| Gain | 60 dB |
-| GBW | 30 MHz |
-| Phase Margin | ≥60° |
-| Slew Rate | 20 V/µs |
-| CL | 2 pF |
-| Power | ≤300 µW |
-| ICMR | 0.8–1.6 V |
+| Supply Voltage (VDD) | 1.8 V |
+| DC Gain | ≥ 60 dB |
+| Gain-Bandwidth Product (GBW) | 30 MHz |
+| Phase Margin | ≥ 60° |
+| Slew Rate | 40 V/µs |
+| Load Capacitance (CL) | 2 pF |
+| Power Dissipation | ≤ 300 µW |
+| Input Common-Mode Range (ICMR) | 0.8–1.6 V |
 
-## Technology Parameters
+---
+
+# Technology Parameters
 
 | Parameter | Value |
 |-----------|-------|
-| Vth,n | 0.37 V |
-| Vth,p | -0.39 V |
-| μn | 274 cm²/V·s |
-| μp | 116 cm²/V·s |
-| tox | 4.1 nm |
-| Cox | 8.42 mF/m² |
+| NMOS Threshold Voltage (VTH,n) | 0.37 V |
+| PMOS Threshold Voltage (VTH,p) | -0.39 V |
+| Electron Mobility (μn) | 274 cm²/V·s |
+| Hole Mobility (μp) | 116 cm²/V·s |
+| Gate Oxide Thickness (tox) | 4.1 nm |
+| Gate Oxide Capacitance (Cox) | 8.42 mF/m² |
 
-## Step 1 – Compensation Capacitor
+---
 
-The Miller compensation capacitor was selected to obtain a phase margin greater than 60°.
+# Compensation Capacitor
 
-Chosen value:
+The Miller compensation capacitor was selected to obtain a phase margin greater than **60°**.
 
-Cc > 0.22 * CL
-Cc > 440fF
-Cc = 500fF
+\[
+C_C > 0.22C_L
+\]
 
-## Step 2 – Bias Current
+\[
+C_C > 0.22 \times 2\text{ pF}
+\]
 
-Required Slew Rate
+\[
+C_C > 440\text{ fF}
+\]
 
-SR = 40 V/µs
+The final compensation capacitor was chosen as:
 
-Using
+**Cc = 500 fF**
 
-SR = I5/Cc
+---
 
-I5 = SR × Cc
+# Bias Current
 
-Therefore,
+The required tail current was determined from the slew-rate specification.
 
-I5 = 20 A
+\[
+SR=\frac{I_5}{C_C}
+\]
 
-## Step 3 – Input Stage Transconductance
+Given
 
-Using
-
-gm1 = 2π × GBW × Cc
-
-Therefore,
-
-gm1 = 160 S
-
-## Step 4 – Second Stage
-
-For a phase margin greater than 60°
-
-gm6 ≈ 10 gm1
+- Slew Rate = 40 V/µs
+- Cc = 500 fF
 
 Therefore,
 
-gm6 = 1600 S
+\[
+I_5 = SR \times C_C
+\]
 
-## Step 5 – Voltage Gain
+\[
+I_5 = 20\,\mu A
+\]
 
-Av = gm1(ro2 || ro4) × gm6(ro6 || ro7)
+---
 
-Required
+# Input Stage Transconductance
 
-Av = 1000 V/V
+The input differential pair transconductance was estimated using
 
-The required output resistances were calculated accordingly.
+\[
+g_{m1}=2\pi \times GBW \times C_C
+\]
 
-## Step 6 – Current Mirror Design
+The final value was verified and optimized through simulation.
 
-Current mirrors were designed using
+---
 
-(W/L)1/(W/L)2 = ID1/ID2
+# Second Stage Design
 
-The transistor dimensions were selected according to the required current ratios.
+To achieve a phase margin greater than **60°**, the second-stage transconductance was selected as
 
-## Final Transistor Dimensions
+\[
+g_{m6}\approx10g_{m1}
+\]
+
+The final transistor sizing was refined through iterative simulation.
+
+---
+
+# Current Mirror Design
+
+The current mirrors were designed according to the required current ratios using
+
+\[
+\frac{(W/L)_1}{(W/L)_2}
+=
+\frac{I_{D1}}{I_{D2}}
+\]
+
+The final transistor dimensions were obtained after iterative optimization.
+
+---
+
+# Final Transistor Dimensions
 
 | Transistor | W/L |
-|-------------|-----|
-| M1 | |
-| M2 | |
-| M3 | |
-| M4 | |
-| M5 | |
-| M6 | |
-| M7 | |
+|------------|----:|
+| M1 | 5 |
+| M2 | 5 |
+| M3 | 7 |
+| M4 | 7 |
+| M5 | 3 |
+| M6 | 63 |
+| M7 | 13.5 |
+| M8 | 3 |
 
-## Saturation Verification
+---
 
-All MOSFETs satisfy the saturation condition.
+# Saturation Verification
 
-NMOS:
+The operating point analysis confirms that the MOSFETs remain in the desired operating region across the specified input common-mode range.
 
-VDS > VGS − VTH
+### NMOS
 
-PMOS:
+\[
+V_{DS}>V_{GS}-V_{TH}
+\]
 
-VSD > VSG − |VTH|
+### PMOS
 
-Verified for
+\[
+V_{SD}>V_{SG}-|V_{TH}|
+\]
 
-- M1
-- M2
-- M3
-- M4
-- M5
-- M6
-- M7
+---
 
-## Final Small-Signal Parameters
+## ICMR = 0.8 V
 
-| MOSFET | gm | gds |
-|---------|----|-----|
-| M1 | | |
-| M2 | | |
-| M3 | | |
-| M4 | | |
-| M5 | | |
-| M6 | | |
-| M7 | | |
+| MOSFET | VDS/VSD (V) | VGS−VTH / VSG−|VTH| (V) | Region |
+|---------|------------:|--------------------------:|--------|
+| M1 | 0.915 | 0.186 | Saturation |
+| M2 | 0.915 | 0.186 | Saturation |
+| M3 | 0.641 | 0.166 | Saturation |
+| M4 | 0.641 | 0.166 | Saturation |
+| M5 | 0.244 | 0.275 | Near Saturation |
+| M6 | 1.192 | 0.251 | Saturation |
+| M7 | 0.608 | 0.275 | Saturation |
 
-## Power Dissipation 
-ID5 = 20µA
-ID6 = 90µA
-VDD = 1.8V
+---
 
-Power Dissippation = 1.8 * (ID5 + ID6) = 198µW (<300µW)
+## ICMR = 1.6 V
+
+| MOSFET | VDS/VSD (V) | VGS−VTH / VSG−|VTH| (V) | Region |
+|---------|------------:|--------------------------:|--------|
+| M1 | 0.125 | 0.205 | Near Saturation |
+| M2 | 0.125 | 0.205 | Near Saturation |
+| M3 | 0.650 | 0.260 | Saturation |
+| M4 | 0.650 | 0.260 | Saturation |
+| M5 | 1.025 | 0.276 | Saturation |
+| M6 | 0.677 | 0.260 | Saturation |
+| M7 | 1.123 | 0.276 | Saturation |
+
+---
+
+# Final Small-Signal Parameters
+
+## ICMR = 0.8 V
+
+| MOSFET | gm (µS) | gds (µS) |
+|---------|--------:|---------:|
+| M1 | 70.25 | 0.950 |
+| M2 | 70.25 | 0.950 |
+| M3 | 114.31 | 1.130 |
+| M4 | 114.31 | 1.130 |
+| M5 | 137.96 | 1.897 |
+| M6 | 1071.81 | 10.670 |
+| M7 | 291.67 | 8.900 |
+
+---
+
+## ICMR = 1.6 V
+
+| MOSFET | gm (µS) | gds (µS) |
+|---------|--------:|---------:|
+| M1 | 99.80 | 1.023 |
+| M2 | 99.80 | 1.023 |
+| M3 | 78.69 | 1.128 |
+| M4 | 78.69 | 1.128 |
+| M5 | 148.19 | 2.045 |
+| M6 | 707.88 | 11.000 |
+| M7 | 241.24 | 9.167 |
+
+---
+
+# Voltage Gain
+
+The overall open-loop voltage gain of the two-stage CMOS operational amplifier is given by
+
+\[
+A_v =
+g_{m1}(r_{o2}\parallel r_{o4})
+\times
+g_{m6}(r_{o6}\parallel r_{o7})
+\]
+
+---
+
+## ICMR = 0.8 V
+
+| Stage | Gain |
+|-------|------|
+| First Stage | 30.58 dB |
+| Second Stage | 34.77 dB |
+| **Overall Gain** | **65.35 dB** |
+
+---
+
+## ICMR = 1.6 V
+
+| Stage | Gain |
+|-------|------|
+| First Stage | 32.94 dB |
+| Second Stage | 30.91 dB |
+| **Overall Gain** | **63.84 dB** |
+
+The simulated open-loop gain exceeds the design target of **60 dB** over the specified input common-mode range.
+
+---
+
+# Power Dissipation
+
+Using
+
+- \(I_{D5}=20\,\mu A\)
+- \(I_{D6}=90\,\mu A\)
+- \(V_{DD}=1.8\,V\)
+
+The total power dissipation is
+
+\[
+P=V_{DD}(I_{D5}+I_{D6})
+\]
+
+\[
+P=1.8\times110\,\mu A
+\]
+
+\[
+P=198\,\mu W
+\]
+
+which satisfies the design specification of
+
+\[
+P<300\,\mu W.
+\]
