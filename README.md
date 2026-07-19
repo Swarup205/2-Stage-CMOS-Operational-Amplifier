@@ -20,7 +20,7 @@ The project demonstrates the complete analog IC design flow, from hand calculati
 | DC Gain | 60 dB |
 | GBW | 30 MHz |
 | Phase Margin | ≥60° |
-| Slew Rate | 20 V/μs |
+| Slew Rate | 40 V/μs |
 | Load Capacitance | 2 pF |
 | Power | ≤300 μW |
 | ICMR | 0.8 V – 1.6 V |
