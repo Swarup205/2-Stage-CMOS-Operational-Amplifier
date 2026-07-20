@@ -81,19 +81,9 @@ Av = gm₁(ro₂ || ro₄) × gm₆(ro₆ || ro₇)
 | M6 | 63 |
 | M7 | 13.5 |
 
-## Operating Point Analysis
+## Circuit Schematic
 
-The operating point analysis verifies that all MOSFETs remain in the saturation region at both ends of the specified input common-mode range.
-
-### ICMR = 0.8 V
-
-![Operating Point (ICMR = 0.8 V)](simulations/Operating_Points/2-Stage_CMOS_OP_AMP_ICMR-.png)
-
-### ICMR = 1.6 V
-
-![Operating Point (ICMR = 1.6 V)](simulations/Operating_Points/2-Stage_CMOS_OP_AMP_ICMR+.png)
-
----
+![Two-Stage CMOS Operational Amplifier Schematic](schematic/op_amp_schematic.png)
 
 ## AC Analysis
 
