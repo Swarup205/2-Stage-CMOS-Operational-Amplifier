@@ -81,6 +81,20 @@ Av = gm₁(ro₂ || ro₄) × gm₆(ro₆ || ro₇)
 | M6 | 63 |
 | M7 | 13.5 |
 
+## Operating Point Analysis
+
+The operating point analysis verifies that all MOSFETs remain in the saturation region at both ends of the specified input common-mode range.
+
+### ICMR = 0.8 V
+
+![Operating Point (ICMR = 0.8 V)](simulations/Operating_Points/2-Stage_CMOS_OP_AMP_ICMR-.png)
+
+### ICMR = 1.6 V
+
+![Operating Point (ICMR = 1.6 V)](simulations/Operating_Points/2-Stage_CMOS_OP_AMP_ICMR+.png)
+
+---
+
 ## AC Analysis
 
 ### ICMR = 0.8 V
@@ -91,21 +105,40 @@ Av = gm₁(ro₂ || ro₄) × gm₆(ro₆ || ro₇)
 
 ![AC Analysis (ICMR = 1.6 V)](simulations/AC_ANALYSIS/ac_analysis_icmr+.png)
 
-## Phase Margin
-
-(Add image)
+---
 
 ## Slew Rate
 
-(Add image)
+### Rising Edge
 
-## ICMR
+![Rise Slew Rate](simulations/SLEW_RATE/SR_RISE.png)
 
-(Add graph)
+### Falling Edge
+
+![Fall Slew Rate](simulations/SLEW_RATE/SR_FALL.png)
+
+---
+
+## ICMR Verification
+
+### Lower Limit (0.8 V)
+
+![ICMR Lower Limit](simulations/ICMR/icmr-_verification.png)
+
+### Upper Limit (1.6 V)
+
+![ICMR Upper Limit](simulations/ICMR/icmr+_verification.png)
+
+### ICMR Sweep
+
+![ICMR Plot](simulations/ICMR/plot.png)
+
+---
 
 ## Output Swing
 
-(Add graph)
+![Output Swing](simulations/OUTPUT_SWING/OUTPUT_SWING.png)
+
 
 ## Performance Summary
 
