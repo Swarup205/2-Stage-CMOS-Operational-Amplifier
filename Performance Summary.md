@@ -10,7 +10,7 @@ The following table summarizes the design specifications, analytical calculation
 | Gain-Bandwidth Product (GBW) | 30 MHz | 30 MHz | 29.932 MHz (0.8 V)<br>34.537 MHz (1.6 V) |
 | Phase Margin | ≥ 60° | > 60° | 45.23° (0.8 V)<br>53.023° (1.6 V) |
 | Slew Rate | 40 V/µs | 40 V/µs | 33.08 V/µs (RISE)<br>30.75 V/µs° (FALL) |
-| Input Common-Mode Range (ICMR) | 0.8–1.6 V | 0.8–1.6 V | 0.7-1.6V |
+| Input Common-Mode Range (ICMR) | 0.8–1.6 V | 0.8–1.6 V | 0.02-1.667V |
 | Load Capacitance (CL) | 2 pF | 2 pF | 2pF |
 | Compensation Capacitor (Cc) | ≥ 440 fF | 500 fF | 500fF |
 | Tail Current (I5) | — | 20 µA | 18.97 µA (0.8 V)<br>20.45 µA (1.6 V) |
