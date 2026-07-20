@@ -81,13 +81,15 @@ Av = gm₁(ro₂ || ro₄) × gm₆(ro₆ || ro₇)
 | M6 | 63 |
 | M7 | 13.5 |
 
-## DC Analysis
-
-![DC Analysis](simulations/dc_analysis.png)
-
 ## AC Analysis
 
-(Add Bode Plot)
+### ICMR = 0.8 V
+
+![AC Analysis (ICMR = 0.8 V)](simulations/AC_ANALYSIS/ac_analysis_icmr-.png)
+
+### ICMR = 1.6 V
+
+![AC Analysis (ICMR = 1.6 V)](simulations/AC_ANALYSIS/ac_analysis_icmr+.png)
 
 ## Phase Margin
 
