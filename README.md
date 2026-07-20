@@ -1,7 +1,6 @@
-# 2-Stage-CMOS-Operational-Amplifier
-Design and simulation of a two-stage CMOS operational amplifier in 180 nm technology.
+# Two-Stage CMOS Operational Amplifier (180 nm CMOS)
 
-# Two-Stage CMOS Operational Amplifier (180 nm)
+Design and simulation of a two-stage CMOS operational amplifier implemented in a 180 nm CMOS process using LTspice.
 
 ## Overview
 
@@ -10,7 +9,6 @@ This repository contains the complete design, analysis, and simulation of a two-
 The project demonstrates the complete analog IC design flow, from hand calculations and transistor sizing to simulation and verification.
 
 ---
-
 ## Design Specifications
 
 | Parameter | Value |
@@ -29,7 +27,7 @@ The project demonstrates the complete analog IC design flow, from hand calculati
 
 ## Architecture
 
-The amplifier consists of
+The proposed operational amplifier employs a classical two-stage architecture consisting of:
 
 - Differential input pair
 - PMOS current mirror active load
@@ -55,59 +53,23 @@ The amplifier was designed using the following procedure.
 12. Verify power dissipation.
 13. Perform AC, DC, and transient simulations.
 
-## Design Equations
+## Key Design Equations
 
-The following equations were used during design.
-
-### GBW
+GBW
 
 gm₁ = 2π × GBW × Cc
 
-### Slew Rate
+---
+
+Slew Rate
 
 SR = I₅ / Cc
 
-## **Phase Margin**
+---
 
-gm₆ ≈ 2.2 × gm₁ (for Phase Margin ≈ 60°)
+Voltage Gain
 
-### Gain
-
-Av = gm2(ro2 || ro4) × gm6(ro6 || ro7)
-
-### Output Resistance
-
-ro = 1/gds
-
-### Drain Current
-
-Id = (1/2)μCox(W/L)Vov²
-
-### Transconductance
-
-gm = 2Id/Vov
-
-### Output Conductance
-
-gds = λId
-
-### Current Mirror Design
-
-(W/L)₁ / (W/L)₂ = ID₁ / ID₂
-
-### Transconductance Ratio
-
-gm₁ / gm₂ = √[(ID₁(W/L)₁)/(ID₂(W/L)₂]
-
-### Saturation Conditions
-
-For NMOS:
-
-VDS ≥ VGS − VTH = VOV
-
-For PMOS:
-
-VSD ≥ VSG − |VTH|
+Av = gm₁(ro₂ || ro₄) × gm₆(ro₆ || ro₇)
 
 ## Final Transistor Dimensions
 
@@ -156,8 +118,8 @@ VSD ≥ VSG − |VTH|
 
 ## Future Improvements
 
-- Layout implementation
-- DRC and LVS verification
+- Common-Mode Rejection Ratio (CMRR)
+- Power Supply Rejection Ratio (PSRR)
 - Post-layout simulation
 - Monte Carlo analysis
 - Process corner analysis
